@@ -178,3 +178,18 @@ myRouter.route('/timeoutlist').get(function(req,res){
  
 })
 
+// -----------Get all Online Users:
+myRouter.route('/onlineuserlist').get(function(req,res){
+
+    UserModel.find({"user_online": "true"}  ,function(err, currentUser){
+        if(err){
+            console.log('an Error has accured in -get all online users- endpoint')
+        } else {
+            res.json(currentUser)
+        }
+
+    })
+ 
+})
+
+
