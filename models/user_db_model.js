@@ -18,6 +18,7 @@ let UserModel = new schema({
 
     user_timeout:{
         // Se i docs under timeout ide. for et forslag på at lave en timeout funktion
+        // måske Date + react moment
         type:Boolean
     },
     user_banned:{
@@ -30,6 +31,7 @@ let UserModel = new schema({
         type:Boolean
     }
 
+    //lav statestik model typer
 })
 
 

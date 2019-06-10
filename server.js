@@ -73,18 +73,6 @@ myRouter.route('/edit/:id').put(function(req, res){
 })
 
 
-//------Get everyone
-myRouter.route('/completelist').get(function(req, res){
-
-    UserModel.find(function(err, Users){
-        if(err){
-            console.log('An error has accurd at userList find')
-        } else {
-            res.json(Users)
-        }
-    })
-})
-
 
 // ----------Get user by id.
 myRouter.route('/user/:id').get(function(req, res){
@@ -118,6 +106,22 @@ myRouter.delete('/delete/:id', function(req, res){
         return res.status(200).send(response)
     })
 })
+
+// ----------------------------------------------------------------------lists
+
+//------Get everyone
+myRouter.route('/completelist').get(function(req, res){
+
+    UserModel.find(function(err, Users){
+        if(err){
+            console.log('An error has accurd at userList find')
+        } else {
+            res.json(Users)
+        }
+    })
+})
+
+
 // -----------Get all Admins:
 myRouter.route('/adminlist').get(function(req,res){
 
