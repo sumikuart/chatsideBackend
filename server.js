@@ -57,6 +57,7 @@ myRouter.route('/edit/:id').put(function(req, res){
             currentUser.user_mail = req.body.user_mail
             currentUser.user_password = req.body.user_password
             currentUser.user_type = req.body.user_type
+            currentUser.user_note = req.body.user_note
             currentUser.user_timeout = req.body.user_timeout
             currentUser.user_banned = req.body.user_banned
             currentUser.user_verified = req.body.user_verified
@@ -87,6 +88,21 @@ myRouter.route('/user/:id').get(function(req, res){
     })
 })
 
+// Search Endpoint. 
+
+myRouter.route('/search/:name').get(function(req, res){
+
+    let searchName=req.params.name
+    
+    UserModel.find({"user_name": searchName}, function(err, currentUser){
+        if(err){
+            console.log('an Error has accured in -Search- endpoint')
+        } else {
+            res.json(currentUser)
+        }
+    })
+})
+
 
 //------------Delete user: 
 
@@ -106,6 +122,7 @@ myRouter.delete('/delete/:id', function(req, res){
         return res.status(200).send(response)
     })
 })
+
 
 // ----------------------------------------------------------------------lists
 
