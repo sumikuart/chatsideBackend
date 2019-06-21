@@ -21,13 +21,15 @@ let UserModel = new schema({
         type:String,
         default: '-No Notes-'
     },
-
-
     user_timeout:{
         // Se i docs under timeout ide. for et forslag på at lave en timeout funktion
         // måske Date + react moment
-        type:Boolean,
-        default: false
+        type:Date,
+        default: Date.now
+    },  
+    user_timeout_length:{
+        type:Date,
+        default: Date.now
     },
     user_banned:{
         type:Boolean,
@@ -41,6 +43,12 @@ let UserModel = new schema({
     user_online:{
         type:Boolean,
         default: false
+    },
+    user_created:{
+        // Se i docs under timeout ide. for et forslag på at lave en timeout funktion
+        // måske Date + react moment
+        type:Date,
+        default: Date.now
     }
 
     //lav statestik model typer

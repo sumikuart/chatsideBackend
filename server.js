@@ -59,6 +59,8 @@ myRouter.route('/edit/:id').put(function(req, res){
             currentUser.user_type = req.body.user_type
             currentUser.user_note = req.body.user_note
             currentUser.user_timeout = req.body.user_timeout
+            currentUser.user_timeout_length=req.body.user_timeout_length
+            currentUser.user_created = req.body.user_created
             currentUser.user_banned = req.body.user_banned
             currentUser.user_verified = req.body.user_verified
             currentUser.user_online = req.body.user_online
@@ -97,6 +99,21 @@ myRouter.route('/search/:name').get(function(req, res){
     UserModel.find({"user_name": searchName}, function(err, currentUser){
         if(err){
             console.log('an Error has accured in -Search- endpoint')
+        } else {
+            res.json(currentUser)
+        }
+    })
+})
+
+// Search Email Endpoint. 
+
+myRouter.route('/searchemail/:name').get(function(req, res){
+
+    let searchName=req.params.name
+    
+    UserModel.find({"user_mail": searchName}, function(err, currentUser){
+        if(err){
+            console.log('an Error has accured in -Search email- endpoint')
         } else {
             res.json(currentUser)
         }
